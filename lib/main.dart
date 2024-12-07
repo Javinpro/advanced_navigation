@@ -1,4 +1,5 @@
 import 'package:advanced_navigations/dynamic_input_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'section_navigator.dart';
 import 'third_screen.dart';
@@ -50,10 +51,16 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Section 1'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Section 2'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(CupertinoIcons.home),
+            label: 'Section 1',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.color_filter),
+            label: 'Section 2',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.generating_tokens),
             label: 'Section 3',
           ),
         ],

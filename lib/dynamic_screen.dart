@@ -12,7 +12,18 @@ class DynamicScreen extends StatelessWidget {
       body: GestureDetector(
         onHorizontalDragEnd: (details) {
           if (details.velocity.pixelsPerSecond.dx > 0) {
-            Navigator.pop(context); // Swipe ke kanan untuk kembali
+            // Cek apakah bisa kembali sebelum memanggil Navigator.pop
+            if (Navigator.canPop(context)) {
+              Navigator.pop(context); // Swipe ke kanan untuk kembali
+            } else {
+              // Tampilkan pesan jika tidak ada halaman sebelumnya
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('No previous page to go back to!'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            }
           }
         },
         child: Center(
